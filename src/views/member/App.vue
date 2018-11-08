@@ -30,12 +30,15 @@ import mainBox from '../common/mainBox'
 			}
 		},
 		methods:{
-
+            change() {
+            	console.log('hello word');
+            }
 		},
 		components: {
 			sideBar,
 			headerNav
 	  	},
+
 	}
 </script>
 
