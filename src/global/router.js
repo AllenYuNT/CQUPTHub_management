@@ -1,20 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '../views/index/router'
 import login from '../views/login/router'
 import member from '../views/member/router'
 import page from  '../views/page/router'
+import project from '../views/project/router'
 Vue.use(Router)
 
 export default new Router({
   routes: [
   	{
       path: '/',
-      redirect:'/index',
+      redirect:'/project',
     },
-    ...index,
+    ...project,
     ...login,
     ...member,
-    ...page
+    ...page,
   ],
 })
