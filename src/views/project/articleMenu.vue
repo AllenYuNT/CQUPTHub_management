@@ -30,99 +30,14 @@
     name: "articleMenu",
     data(){
       return {
-        menuData: {
-          design: [
-            {
-              title: '《架构设计》',
-              content: '架构设计是人们对一个结构内的元素及元素间关系的一种主观映射的',
-              id: 1,
-              type: 'design'
-            },
-            {
-              title: '《架构设计》',
-              content: '架构设计是人们对一个结构内的元素及元素间关系的一种主观映射的',
-              id: 1,
-              type: 'design'
-            },
-            {
-              title: '《架构设计》',
-              content: '架构设计是人们对一个结构内的元素及元素间关系的一种主观映射的',
-              id: 1,
-              type: 'design'
-            },
-            {
-              title: '《架构设计》',
-              content: '架构设计是人们对一个结构内的元素及元素间关系的一种主观映射的',
-              id: 1,
-              type: 'design'
-            },
-            {
-              title: '《架构设计》',
-              content: '架构设计是人们对一个结构内的元素及元素间关系的一种主观映射的',
-              id: 1,
-              type: 'design'
-            }
-          ],
-          keyissue: [
-            {
-              title: '《关键问题》',
-              content: '2013年，中国经济必将面临重大调整，公众有理由期待，面对新形势新问题',
-              id: 2,
-              type: 'keyissue'
-            },
-            {
-              title: '《关键问题》',
-              content: '2013年，中国经济必将面临重大调整，公众有理由期待，面对新形势新问题',
-              id: 2,
-              type: 'keyissue'
-            },
-            {
-              title: '《关键问题》',
-              content: '2013年，中国经济必将面临重大调整，公众有理由期待，面对新形势新问题',
-              id: 2,
-              type: 'keyissue'
-            }
-          ],
-          point: [
-            {
-              title: '《技术要点》',
-              content: '2013年，中国经济必将面临重大调整，公众有理由期待，面对新形势新问题',
-              id: 3,
-              type: 'point'
-            },
-            {
-              title: '《技术要点》',
-              content: '2013年，中国经济必将面临重大调整，公众有理由期待，面对新形势新问题',
-              id: 3,
-              type: 'point'
-            },
-            {
-              title: '《技术要点》',
-              content: '2013年，中国经济必将面临重大调整，公众有理由期待，面对新形势新问题',
-              id: 3,
-              type: 'point'
-            },
-            {
-              title: '《技术要点》',
-              content: '2013年，中国经济必将面临重大调整，公众有理由期待，面对新形势新问题',
-              id: 3,
-              type: 'point'
-            }
-          ],
-          process: [{
-            title: '《过程日记》',
-            content: '2013年，中国经济必将面临重大调整，公众有理由期待，面对新形势新问题',
-            id: 4,
-            type: 'process'
-          }]
-        },
+        menuData: {},
         menuTitle:['架构设计','关键问题','技术要点','过程日记'],
         projectID:''
       }
     },
     created() {
-      this.projectID = this.$route.params.Projectid;
-      this.menuData = this.$api.getData('/getTypeProject?Projectid='+projectID);
+      this.projectID = this.$route.params.ProjectID;
+      this.menuData = this.$api.getData('/getTypeProject?Projectid='+this.projectID);
     }
   }
 </script>

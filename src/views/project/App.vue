@@ -66,91 +66,13 @@ import lastlogin from '../common/lastlogin.vue'
         projectName:'',
         projectMan:'',
         projectTime:'',
-        projectList:{
-          list:[
-            {
-            	projectName:'aaaa',
-							projectMan:'aaaaaaa',
-							howmany:'aaaaaaaaaaaaa',
-							time:'aaaaaaa',
-							Projectid:'aaaaaaaaaa'
-						},
-            {
-              projectName:'aaaa',
-              projectMan:'aaaaaaa',
-              howmany:'aaaaaaaaaaaaa',
-              time:'aaaaaaa',
-              Projectid:'aaaaaaaaaa'
-            },
-            {
-              projectName:'aaaa',
-              projectMan:'aaaaaaa',
-              howmany:'aaaaaaaaaaaaa',
-              time:'aaaaaaa',
-              Projectid:'aaaaaaaaaa'
-            },
-            {
-              projectName:'aaaa',
-              projectMan:'aaaaaaa',
-              howmany:'aaaaaaaaaaaaa',
-              time:'aaaaaaa',
-              Projectid:'aaaaaaaaaa'
-            },
-            {
-              projectName:'aaaa',
-              projectMan:'aaaaaaa',
-              howmany:'aaaaaaaaaaaaa',
-              time:'aaaaaaa',
-              Projectid:'aaaaaaaaaa'
-            },
-            {
-              projectName:'aaaa',
-              projectMan:'aaaaaaa',
-              howmany:'aaaaaaaaaaaaa',
-              time:'aaaaaaa',
-              Projectid:'aaaaaaaaaa'
-            },
-            {
-              projectName:'aaaa',
-              projectMan:'aaaaaaa',
-              howmany:'aaaaaaaaaaaaa',
-              time:'aaaaaaa',
-              Projectid:'aaaaaaaaaa'
-            },
-            {
-              projectName:'aaaa',
-              projectMan:'aaaaaaa',
-              howmany:'aaaaaaaaaaaaa',
-              time:'aaaaaaa',
-              Projectid:'aaaaaaaaaa'
-            }
-    			],
-      		total:2
-    		}
+        projectList:{}
     	}
 		},
 		methods:{
 		  search(){
 		    let url = '/getProject?name='+this.projectName+'&man='+this.projectMan+'&time='+this.projectTime;
-		    // this.projectList = this.$api.getData(url);
-				this.projectList = {
-				  list:[
-            {
-              projectName:'aaaa',
-              projectMan:'aaaaaaa',
-              howmany:'aaaaaaaaaaaaa',
-              time:'aaaaaaa',
-              Projectid:'aaaaaaaaaa'
-            },
-            {
-              projectName:'aaaa',
-              projectMan:'aaaaaaa',
-              howmany:'aaaaaaaaaaaaa',
-              time:'aaaaaaa',
-              Projectid:'aaaaaaaaaa'
-            }
-					]
-				};
+		    this.projectList = this.$api.getData(url);
 			}
 		},
 		components:{
@@ -158,7 +80,7 @@ import lastlogin from '../common/lastlogin.vue'
 			lastlogin,
 		},
 		created(){
-		  // this.projectList = this.$api.getData('/getProject?');
+		  this.projectList = this.$api.getData('/getProject?');
 		}
 	}
 </script>

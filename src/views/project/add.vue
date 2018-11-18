@@ -9,7 +9,7 @@
       项目负责人<br />
       <input v-model="projectMan" class="addInput" type="text" placeholder="">
     </p>
-    <router-link :to="{name:'articleMenu',params:{Projectid:projectID}}">
+    <router-link :to="{name:'articleMenu',params:{ProjectID:projectID}}">
       <button class="next" @click="nextId()">保存</button>
     </router-link>
   </div>
@@ -39,8 +39,8 @@
           projectMan:this.projectMan,
           time:addTime
         };
-        // let sta = this.$api.sendData('/addProject');
-        this.projectID = '123';
+        // let sta = this.$api.sendData('/addProject',addData);
+        // this.projectID = sta.projectNewId;
       }
     }
   }
