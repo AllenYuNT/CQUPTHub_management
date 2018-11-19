@@ -2,24 +2,28 @@
 	<div class='project'>
 		<main class="main">
 			<div class='button-box'>
-				<div>
-					<span>文章标题: </span>
-					<input type="text" placeholder="可不填">
-				</div>
-				<div>
-					<span>作者:  </span>
-					<input type="text" placeholder="可不填">
-				</div>
-				<div>
-					<span>上传时间:</span>
-					<input type="text" placeholder="最近一周">
+				<div class="search">
+					<div>
+						<span>文章标题: </span>
+						<input type="text" placeholder="可不填">
+					</div>
+					<div>
+						<span>作者:  </span>
+						<input type="text" placeholder="可不填">
+					</div>
+					<div>
+						<span>上传时间:</span>
+						<input type="text" placeholder="最近一周">
+					</div>
 				</div>
 				<button>查询</button>
 			</div>
 			<div class='project-box'>
 				<header class='myheader'>
-					<div>文章标题</div>
-					<div>部分正文</div>
+					<div class="header">
+						<div>文章标题</div>
+						<div>部分正文</div>
+					</div>
 					<button>添加文章</button>
 				</header>
 				<div class='content-box'>
@@ -60,7 +64,7 @@
 					</div>
 				</div>
 			</div>
-			<pagination></pagination>
+			<pagination @click="add"></pagination>
 			<lastlogin></lastlogin>
 		</main>
 	</div>
@@ -77,23 +81,14 @@ import lastlogin from '../common/lastlogin.vue'
 					id:'',
 					title:'',
     			content:''
-				}]
+				}],
+				count: 1
 			}
 		},
 		methods:{
-
-		},
-		watch: {
-			/*this.$store.state.count: {
-				this.$api.sendData('',this.$store.state.count)
-				.then((res))=>{
-					console.log(res)
-				}
-				this.$api.getData('')
-				.then((res)=>{
-					console.log(res)
-				})
-			}*/
+			add: function() {
+				count++;
+			}
 		},
 		components:{
 			pagination,
@@ -116,15 +111,25 @@ import lastlogin from '../common/lastlogin.vue'
 			flex-shrink:0;
 			height:50px;
 			width:100%;
-			margin-bottom:10px;
 			display: flex;
+			justify-content: space-between;
 			padding-left: 30px;
+			align-items: center;
+			.search {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
 			div {
+				display: flex;
+				flex-direction: row;
 				font-size: 15px;
+				justify-content:flex-start;
+				align-items: center;
 				padding-right: 100px;
 				span {
 					padding-right: 10px;
-					line-height: 50px;
+					width: 80px;
 				}
 				input {
 					width: 110px;
@@ -137,7 +142,6 @@ import lastlogin from '../common/lastlogin.vue'
 				height: 35px;
 				width: 140px;
 				margin-top: 8px;
-				margin-left: 150px;
 				color: orange;
 				font-size: 15px;
 			}
@@ -148,15 +152,22 @@ import lastlogin from '../common/lastlogin.vue'
 			margin-top:10px;
 			background-color: rgba(242, 242, 242, 1);
 			.myheader{
+				justify-content: space-between;
 				height:40px;
 				display: flex;
+				align-items: center;
+				.header{
+					display: flex;
+				}
 				div {
 					font-size: 15px;
-					padding-top: 15px;
 					font-family: 'Arial Negreta', 'Arial';
 			    font-weight: 700;
 			    font-style: normal;
-					padding-left: 50px;
+					padding-left: 20px;
+					&:nth-child(2) {
+						padding-left: 55px;
+					}
 				}
 				button {
 					height: 30px;
@@ -164,8 +175,6 @@ import lastlogin from '../common/lastlogin.vue'
 					background-color: white;
 					border: none;
 					font-size: 15px;
-					margin-top: 5px;
-					margin-left: 790px;
 					box-shadow: 0 0 10px #ccc;
 				}
 			}
@@ -177,8 +186,8 @@ import lastlogin from '../common/lastlogin.vue'
 					height:12.5%;
 					display:flex;
 					margin-bottom: 10px;
+					align-items: center;
 					.header-list{
-						padding: 10px 0 0 0;
 						padding-left: 35px;
 					}
 					.footer-list{
@@ -196,6 +205,7 @@ import lastlogin from '../common/lastlogin.vue'
 						margin-left: 280px;
 						margin: 5px 0;
 						border: none;
+						height: 28px;
 						box-shadow: 0 0 10px #ccc;
 					}
 				}
