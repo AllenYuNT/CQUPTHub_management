@@ -98,6 +98,7 @@
 
 						experience:this.man,
 					}
+					console.log(a);
 					this.$api.sendData('/addMember',{
 						name:this.name,
 						college:this.xueyuan,
@@ -107,15 +108,7 @@
 						experience:this.man,
 					})
 					.then((res)=>{
-						if(res.static == 1){
-							alert('添加成功')
-						}
-						else{
-							alert('添加失败')
-						}
-					})
-					.catch((err)=>{
-						console.log(err);
+						console.log(res);
 					})
 				}
 			}

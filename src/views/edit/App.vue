@@ -160,7 +160,13 @@
 	         	}
 	        },
 	        returnProject () {
-	        	this.$router.go(-1);
+	        	if(this.index == 1) {
+	        		//返回项目页面
+	        	    this.$router.push({path:'/project'});
+	        	} else if(this.index == 2) {
+	        		//返回文章页面
+	        		this.$router.push({path:'/page'});
+	        	}
 	        },
 	        showTips () {
 	        	// 删除编辑的内容
@@ -198,9 +204,6 @@
 	        		else{
 	        			alert('编辑失败')
 	        		}
-	        	})
-	        	.catch((res)=>{
-	        		alert('出错')
 	        	})
 	        	// this.checkStatic();
             },
@@ -276,7 +279,6 @@
         	position: absolute;
         	top:20px;
         	left: 50px;
-        	cursor: pointer;
         }
     }
 </style>
