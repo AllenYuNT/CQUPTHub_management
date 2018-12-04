@@ -99,7 +99,7 @@
 						experience:this.man,
 					}
 					console.log(a);
-					this.$api.sendData('/addMember',{
+					this.$api.sendData('/api/addMember',{
 						name:this.name,
 						college:this.xueyuan,
 						direction:this.xiaozu,
@@ -108,7 +108,16 @@
 						experience:this.man,
 					})
 					.then((res)=>{
-						console.log(res);
+						if(res.static==1){
+							alert('添加成功')
+						}
+						else{
+							alert('添加失败')
+						}
+						this.$router.go(-1);
+					})
+					.catch((res)=>{
+						alert('出错')
 					})
 				}
 			}

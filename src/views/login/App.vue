@@ -60,7 +60,7 @@
 					username:this.user,
 					password:this.password,
 				};
-				this.$api.sendData('/checklogin',user)
+				this.$api.sendData('/api/checklogin',user)
 				.then((res)=>{
 					if(res.static == 0){
 						alert('当前输入帐号不存在！')

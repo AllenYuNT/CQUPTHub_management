@@ -129,11 +129,11 @@
 		        //创建编辑器   
 			    this.editor.create()
 			    //初始化编辑器的内容
-			    this.editor.txt.html(`<p>${this.content}</p>`);
+			    this.editor.txt.html(`${this.content}`);
 	        },
 	        returnProject () {
 	        	//返回项目页面
-	        	this.$router.push();
+	        	this.$router.go(-1);
 	        },
 	        getTime () {
                 let data = new Date();
@@ -144,7 +144,8 @@
 	        },
             uploadPage () {
             	this.getTime();
-	    		this.$api.sendData(`${this.url}`,{
+
+	    		this.$api.sendData(`/api${this.url}`,{
 	    			projectid:this.projectid,
 	    			pageTit:this.jianjie,
 	        		type:this.type,
@@ -155,11 +156,16 @@
 	        	.then((res)=>{
 	        		if(res.static == 1){
 	        			alert('上传成功');
-	        			this.$router.go(-1);
+	        			
 	        		}
 	        		else{
-	        			alert('上传失败')
+	        			alert('上传失败');
+
 	        		}
+	        		this.$router.go(-1);
+	        	})
+	        	.catch((res)=>{
+	        		alert('出错')
 	        	})
             },
         },
@@ -224,6 +230,7 @@
         	position: absolute;
         	top:20px;
         	left: 50px;
+        	cursor:pointer;
         }
     }
 </style>

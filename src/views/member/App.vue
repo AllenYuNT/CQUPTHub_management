@@ -31,11 +31,6 @@
 								<div class="namemenber">{{item.name}}</div>
 								<div class="institute">{{item.college}}</div>
 								<div class="director">{{item.college}}</div>
-								<div class="edit">
-									<router-link to='/editmember' class="clors"> 
-									编辑
-									</router-link>
-								</div>
 							</header>
 							<footer class='footer-list'></footer>
 						</router-link>
@@ -78,7 +73,7 @@ import lastlogin from '../common/lastlogin.vue'
 		},
 		methods:{
 			getData(){
-				this.$api.getData('/getMember?name=&college=&direction=&page=1')
+				this.$api.getData('/api/getMember?name=&college=&direction=&page=1')
 				.then((res)=>{
 					console.log(res);
 					this.list = res.member;
@@ -89,10 +84,11 @@ import lastlogin from '../common/lastlogin.vue'
 			getDetail(page){
 				this.list = [];
 				this.finsh = false;
-				this.$api.getData('/getMember?name=&college=&direction=&page=' + page)
+				this.$api.getData('/api/getMember?name=&college=&direction=&page=' + page)
 				.then((res)=>{
 					this.list = res.member;
 					this.finsh = true;
+					
 				})
 			},
 			goOther(page){
@@ -245,12 +241,24 @@ import lastlogin from '../common/lastlogin.vue'
 			}
 			.content-box{
 				height:calc(100% - 50px);
+				@keyframes show {
+					0% {
+						opacity:0;
+						transform:translateY(50px);
+					}
+					100% {
+						opacity:1;
+						transform:translateY(0);
+					}
+				}
 				.list{
 					height:12.5%;
 					display:flex;
 					flex-direction:column;
 					background:white;
 					cursor:pointer;
+					animation: 0.8s show forwards;
+
 					.header-list{
 						flex:1;
 						background-color: #ffffff;

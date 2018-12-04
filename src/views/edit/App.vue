@@ -67,7 +67,7 @@
         },
         methods: {
         	getData(){
-        		this.$api.getData(`/getProjectPage?id=${this.pageId}`)
+        		this.$api.getData(`/api/getProjectPage?id=${this.pageId}`)
         		.then((res)=>{
         			this.txt = res.title;
         			this.jianjie = res.EssayTit;
@@ -160,13 +160,7 @@
 	         	}
 	        },
 	        returnProject () {
-	        	if(this.index == 1) {
-	        		//返回项目页面
-	        	    this.$router.push({path:'/project'});
-	        	} else if(this.index == 2) {
-	        		//返回文章页面
-	        		this.$router.push({path:'/page'});
-	        	}
+	        	this.$router.go(-1);
 	        },
 	        showTips () {
 	        	// 删除编辑的内容
@@ -189,7 +183,7 @@
 
             uploadPage () {
             	this.getTime();
-	    		this.$api.sendData('/addProjectPage',{
+	    		this.$api.sendData('/api/addProjectPage',{
 	    			pageTit:this.jianjie, 
 	    			id:this.pageId,
 	        		title:this.txt,
@@ -197,13 +191,18 @@
 	        		time:this.time
 	        	})
 	        	.then((res)=>{
-	        		if(res.static == 1){
+	        		console.log(res);
+	        		if(res.static == 0){
 	        			alert('编辑成功');
 	        			this.$router.go(0);
 	        		}
 	        		else{
-	        			alert('编辑失败')
+	        			alert('编辑失败');
+	        			this.$router.go(-1);
 	        		}
+	        	})
+	        	.catch((res)=>{
+	        		alert('出错')
 	        	})
 	        	// this.checkStatic();
             },
@@ -279,6 +278,7 @@
         	position: absolute;
         	top:20px;
         	left: 50px;
+        	cursor: pointer;
         }
     }
 </style>

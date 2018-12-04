@@ -64,7 +64,7 @@
             projectMan:this.projectMan,
             time:this.hangeData(new Date())
           };
-          this.$api.sendData('/addProject',addData)
+          this.$api.sendData('/api/addProject',addData)
           .then((res)=>{
             this.$router.go(-1);
           })

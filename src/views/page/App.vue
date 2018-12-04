@@ -81,7 +81,7 @@ export default{
 	},
 	methods:{
 	  	getData(){
-		  	this.$api.getData("/getAllPage?title=&time=&page=1")
+		  	this.$api.getData("/api/getAllPage?title=&time=&page=1")
 		  	.then((res)=>{
 		  		this.allItem = res.total; //总共多少页
 		  		res.pageAll.map((item,index)=>{
@@ -102,7 +102,7 @@ export default{
 		getDetail(page,pageName,pageTime){
 			this.finsh = false;
 			this.pagelist = [];
-			this.$api.getData('/getAllPage?title=&time=&page=' + page)
+			this.$api.getData('/api/getAllPage?title=&time=&page=' + page)
 
 		  	.then((res)=>{
 		  		this.allItem = res.total; //总共多少页
@@ -122,7 +122,7 @@ export default{
 		  	})
 		},
 		getProjectAll(){
-			this.$api.getData('/getAllProject')
+			this.$api.getData('/api/getAllProject')
 			.then((res)=>{
 				this.projectAll  = res.list
 			})

@@ -18,7 +18,7 @@
 				</p>
 				<button class="projectSearch" @click="search()">查询</button>
 			</div>
-			<div class='project-box' v-if='finsh'>
+			<div class='project-box'>
 				<header class='myheader'>
 					<p class="ProjectDetail">项目名称</p>
 					<p class="ProjectDetail">项目简介</p>
@@ -26,7 +26,7 @@
 					<p class="ProjectDetail">项目时间</p>
 					<router-link to="/addProject"><button class="addProject">添加项目</button></router-link>
 				</header>
-				<div class='content-box'>
+				<div class='content-box' v-if='finsh'>
 					<!--<transition name="listBox">-->
 					<div class='list listBox' v-for="(item,index) in projectList">
 						<header class='header-list'>
@@ -70,7 +70,7 @@ import lastlogin from '../common/lastlogin.vue'
 		},
 		methods:{
 		  	getMyData(){
-			  	this.$api.getData("/getProject?name=&time=&page=1")
+			  	this.$api.getData("/api/getProject?name=&time=&page=1")
 			  	.then((res)=>{
 			  		this.projectList = res.list;
 			  		this.allItem = res.total;
@@ -81,9 +81,10 @@ import lastlogin from '../common/lastlogin.vue'
 			  	})
 		  	},
 			getDetail(page,pageName,pageTime){
+				console.log(page);
 				this.finsh = false;
 				this.projectList = [];
-				this.$api.getData('/getAllPage?title=&time=&page=' + page)
+				this.$api.getData('/api/getProject?name=&time=&page=' + page)
 			  	.then((res)=>{
 			  		this.allItem = res.total; //总共多少
 			  		this.finsh = true;

@@ -38,7 +38,7 @@
     },
     created() {
       this.projectID = this.$route.query.Projectid;
-      this.$api.getData(`/getTypeProject?Projectid=${this.projectID}`)
+      this.$api.getData(`/api/getTypeProject?Projectid=${this.projectID}`)
       .then((res)=>{
         res = JSON.stringify(res);
         this.menuData = JSON.parse(res);
